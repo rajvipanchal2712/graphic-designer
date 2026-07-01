@@ -5,32 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Graphic Designer</title>
   <style>
-    * { margin: 0; padding: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { 
       height: 100%; 
       background: #000; 
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    
     video { 
-      width: 100vw; 
-      height: 100vh; 
-      display: block;
-    }
-    
-    /* Mobile: Fullscreen cover karo */
-    @media (max-width: 768px) {
-      video {
-        object-fit: cover; /* Phone pe zoom karke full screen */
-      }
-    }
-    
-    /* Desktop/Laptop: Puri video dikhao, black bars aa jaye to chalega */
-    @media (min-width: 769px) {
-      video {
-        object-fit: contain; /* Laptop pe puri video, no crop */
-        background: #000;
-      }
+      max-width: 100%; 
+      max-height: 100%; 
+      width: auto;
+      height: auto;
+      object-fit: contain; /* Puri video dikhegi, no crop */
     }
   </style>
 </head>
@@ -40,6 +29,7 @@
   </video>
   
   <script>
+    // Mobile pe tap karne se play ho jaye agar autoplay block ho
     document.addEventListener('click', () => {
       document.querySelector('video').play();
     });

@@ -5,29 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Graphic Designer</title>
   <style>
+    * { margin: 0; padding: 0; }
     html, body { 
-      margin: 0; 
-      padding: 0; 
       height: 100%; 
       background: #000; 
       overflow: hidden;
     }
+    
     video { 
       width: 100vw; 
       height: 100vh; 
-      object-fit: cover; 
       display: block;
+    }
+    
+    /* Mobile: Fullscreen cover karo */
+    @media (max-width: 768px) {
+      video {
+        object-fit: cover; /* Phone pe zoom karke full screen */
+      }
+    }
+    
+    /* Desktop/Laptop: Puri video dikhao, black bars aa jaye to chalega */
+    @media (min-width: 769px) {
+      video {
+        object-fit: contain; /* Laptop pe puri video, no crop */
+        background: #000;
+      }
     }
   </style>
 </head>
 <body>
   <video autoplay muted loop playsinline preload="auto">
     <source src="./video/reel.mp4" type="video/mp4">
-    Video load nahi ho pa rahi.
   </video>
   
   <script>
-    // Autoplay fail ho to click pe play karwa de
     document.addEventListener('click', () => {
       document.querySelector('video').play();
     });

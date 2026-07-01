@@ -5,21 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Graphic Designer</title>
   <style>
-    * { margin: 0; padding: 0; }
-    body, html { height: 100%; overflow: hidden; background: #000; }
-    video {
-      position: fixed;
-      top: 50%; left: 50%;
-      min-width: 100%; min-height: 100%;
-      width: auto; height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      height: 100%; 
+      background: #000; 
+      overflow: hidden;
+    }
+    video { 
+      width: 100vw; 
+      height: 100vh; 
+      object-fit: cover; 
+      display: block;
     }
   </style>
 </head>
 <body>
-  <video autoplay muted loop playsinline>
-    <source src="reel.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="./video/reel.mp4" type="video/mp4">
+    Video load nahi ho pa rahi.
   </video>
+  
+  <script>
+    // Autoplay fail ho to click pe play karwa de
+    document.addEventListener('click', () => {
+      document.querySelector('video').play();
+    });
+  </script>
 </body>
 </html>
